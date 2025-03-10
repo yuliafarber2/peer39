@@ -1,10 +1,10 @@
-package com.example.webtextextractor;
+package com.urlcategorizer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WebTextExtractorApplicationTests {
+class ApplicationTests {
 
 	@Test
 	void contextLoads() {

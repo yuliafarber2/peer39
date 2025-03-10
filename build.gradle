@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.4.3'
+    id 'org.springframework.boot' version '2.7.4'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -21,13 +21,14 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     // Spring Boot Starter Web - For building REST APIs
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.jsoup:jsoup:1.15.4'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.projectlombok:lombok:1.18.22'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-    // Lombok - To reduce boilerplate code (Getters, Setters, etc.)
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-    // Spring Boot DevTools - Enables hot reloading for faster development
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.mockito:mockito-core:4.0.0'  // Mockito dependency
+    compileOnly 'org.projectlombok:lombok:1.18.24'  // Lombok library
 }
 
 tasks.named('test') {
