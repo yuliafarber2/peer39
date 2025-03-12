@@ -1,0 +1,57 @@
+Design Document: URL Categorization Service Deployment on Kubernetes (Bonus)
+1. Introduction
+    1.1 Overview
+    The URL Categorization Service is responsible for processing URLs, extracting text from web pages, and categorizing the pages based
+    on keywords. The service will be deployed on Kubernetes, ensuring scalability, high availability, and effective monitoring.
+
+    1.2 Objectives
+        Scalability: Automatically scale the service based on load using Kubernetes.
+        High Availability: Maintain service availability even under failure conditions.
+        Monitoring & Logging: Implement monitoring and logging using Prometheus and Grafana.
+        CI/CD Pipeline: Automate deployments through Docker and Kubernetes.
+
+2. System Architecture
+
+    2.1 Components - The architecture consists of the following key components:
+
+        2.1.1   URL Categorization Service: A Spring Boot application responsible for extracting text content from URLs and categorizing URLs based on keywords or phrases.
+        2.1.2   Category Service:
+                A persistent service responsible for storing, retrieving, and managing categories and keywords.
+                Instead of using in-memory storage, the service will interact with a relational database mySql or NoSQL database to manage the keyword categories.
+                A RESTful API will be used to fetch category data for classification from the database.
+                This approach ensures the category and keyword data can scale and be managed dynamically.
+        2.1.3   Load Balancer
+                Distributes incoming requests across multiple service instances to ensure traffic is balanced and the service can handle high volumes.
+        2.1.4   Monitoring & Logging: use Prometheus & Grafana for collecting system metrics and visualizing them.
+        2.1.5   CI/CD Pipeline: Automates building, testing, and deployment using Docker and Kubernetes.
+
+3. Kubernetes Deployment Strategy
+
+    3.1 Resources
+
+        3.1.1   Horizontal Pod Autoscaling:
+                The service will run as multiple pods.
+                The number of pods will scale up or down automatically based on CPU or memory usage, ensuring efficient resource utilization.
+        3.1.2   Kubernetes Deployment:
+                The service will be deployed using a Kubernetes Deployment, ensuring that the correct number of replicas are running and automatically handling pod restarts during failures.
+        3.1.3   Load Balancer:
+                A Kubernetes LoadBalancer service will be used to expose the service to external traffic. This ensures incoming requests are distributed across all available pods.
+        3.1.4   Prometheus & Grafana
+
+4. CI/CD Pipeline
+
+    4.1 Dockerization:
+        The application will be containerized using Docker, with a Dockerfile created to build the application image.
+        Once the Docker image is built, it will be pushed to a container registry.
+    4.2 CI/CD Automation:
+        A CI/CD pipeline using Jenkins will automate the process of building, testing, and deploying the service to Kubernetes.
+    4.3 Kubernetes Deployment:
+        The pipeline will deploy the application to Kubernetes..
+
+5. Monitoring & Scaling Considerations
+
+    5.1 Monitoring
+        Prometheus will scrape metrics from the Kubernetes pods to monitor: request count, response time, error rates, resource usage
+        Grafana will visualize these metrics.
+    5.2 Scaling
+        The Horizontal Pod Autoscaler (HPA) will scale the pods up or down and allow the service to handle varying traffic loads efficiently.

@@ -7,7 +7,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Getter
 @Builder
-public class UrlTextResultDTO {
+public class UrlContentResultDTO {
     private String url;
     private String text;
 }

@@ -1,6 +1,4 @@
 spring:
   application:
-    name: web-text-extractor
-
-useUrlContentCache: true
+    name: url-categorization
 
