@@ -1,6 +1,5 @@
 package com.urlcategorizer.service;
 
-import com.urlcategorizer.datastructure.Trie;
 import com.urlcategorizer.dto.UrlCategorizationResultDTO;
 import com.urlcategorizer.entity.Category;
 import com.urlcategorizer.entity.CategoryKeyword;
